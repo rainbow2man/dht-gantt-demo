@@ -22,7 +22,7 @@ import { cloneDeep } from "lodash";
 
 //拆分的组件
 import RenderZoomPicker from "./components/zoom-picker/RenderZoomPicker.tsx";
-
+import AddOrEditTaskModel from "./components/add-or-edit-task-model/index.tsx";
 //表单内 grid栅栏 的配置
 const formItemLayout = {
   labelCol: {
@@ -395,7 +395,7 @@ export default function App(props) {
 
     // 设置 甘特图 时间列的 class 类名，用于配置禁用日期的样式
     gantt.templates.timeline_cell_class = (task, date) => {
-      console.log("_ZoomComnponent", _ZoomComnponent.current._curZoom);
+      // console.log("_ZoomComnponent", _ZoomComnponent.current._curZoom);
       const disableHighlight = ["month", "year", "quarter"].includes(
         //获取子节点的当前时间刻度变量
         _ZoomComnponent.current._curZoom
@@ -1464,8 +1464,9 @@ export default function App(props) {
         }}
         style={{ width: "100%", height: "100%" }}
       />
+
       {/*  双击任务弹出模态框  */}
-      <Modal
+      {/* <Modal
         open={visible}
         onCancel={handleModalCancel}
         footer={renderFooter()}
@@ -1482,7 +1483,9 @@ export default function App(props) {
         >
           {renderFormList()}
         </Form>
-      </Modal>
+      </Modal> */}
+
+      <AddOrEditTaskModel visible={visible} setVisible={setVisible} />
     </div>
   );
 }
